@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Delta E76 Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background: #f5f5f5;
+    }
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+        width: 80px;
+        padding: 5px;
+        margin: 5px;
+    }
+    button {
+        padding: 10px 15px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    .result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>ΔE76 Calculator</h2>
+
+    <h4>Sample 1</h4>
+    L: <input id="L1" type="number" step="any">
+    a: <input id="a1" type="number" step="any">
+    b: <input id="b1" type="number" step="any">
+
+    <h4>Sample 2</h4>
+    L: <input id="L2" type="number" step="any">
+    a: <input id="a2" type="number" step="any">
+    b: <input id="b2" type="number" step="any">
+
+    <br>
+    <button onclick="calculate()">Calculate ΔE76</button>
+
+    <div class="result" id="output"></div>
+</div>
+
+<script>
+function calculate() {
+    let L1 = parseFloat(document.getElementById("L1").value);
+    let a1 = parseFloat(document.getElementById("a1").value);
+    let b1 = parseFloat(document.getElementById("b1").value);
+
+    let L2 = parseFloat(document.getElementById("L2").value);
+    let a2 = parseFloat(document.getElementById("a2").value);
+    let b2 = parseFloat(document.getElementById("b2").value);
+
+    let deltaE76 = Math.sqrt(
+        Math.pow(L2 - L1, 2) +
+        Math.pow(a2 - a1, 2) +
+        Math.pow(b2 - b1, 2)
+    );
+
+    document.getElementById("output").innerHTML =
+        "ΔE76 = " + deltaE76.toFixed(4);
+}
+</script>
+
+</body>
+</html>
